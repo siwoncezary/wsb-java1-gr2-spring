@@ -3,9 +3,7 @@ package pl.wsb.wsbspringgr2.config;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.wsb.wsbspringgr2.servlet.HelloServlet;
-import pl.wsb.wsbspringgr2.servlet.HomeServlet;
-import pl.wsb.wsbspringgr2.servlet.ParameterServlet;
+import pl.wsb.wsbspringgr2.servlet.*;
 
 @Configuration
 public class ServletConfig {
@@ -15,10 +13,10 @@ public class ServletConfig {
         ServletRegistrationBean<HomeServlet> servlet = new ServletRegistrationBean<HomeServlet>();
         servlet.setServlet(new HomeServlet());
         servlet.setLoadOnStartup(1);
-        servlet.addUrlMappings("/","/home");
+        servlet.addUrlMappings("/");
         return  servlet;
     }
-    //Zarejestrować serwlet działający pod url: /hello drukujący komunikat "Hello"
+
     @Bean
     ServletRegistrationBean<HelloServlet> registerHelloServlet(){
         ServletRegistrationBean<HelloServlet> servlet = new ServletRegistrationBean<>();
@@ -34,6 +32,33 @@ public class ServletConfig {
         servlet.setServlet(new ParameterServlet());
         servlet.setLoadOnStartup(1);
         servlet.addUrlMappings("/parameters");
+        return  servlet;
+    }
+
+    @Bean
+    ServletRegistrationBean<CookieServlet> registerCookieServlet(){
+        ServletRegistrationBean<CookieServlet> servlet = new ServletRegistrationBean<>();
+        servlet.setServlet(new CookieServlet());
+        servlet.setLoadOnStartup(1);
+        servlet.addUrlMappings("/cookie");
+        return  servlet;
+    }
+
+    @Bean
+    ServletRegistrationBean<SessionServlet> registerSessionServlet(){
+        ServletRegistrationBean<SessionServlet> servlet = new ServletRegistrationBean<>();
+        servlet.setServlet(new SessionServlet());
+        servlet.setLoadOnStartup(1);
+        servlet.addUrlMappings("/login");
+        return  servlet;
+    }
+
+    @Bean
+    ServletRegistrationBean<TaskServlet> registerTaskServlet(){
+        ServletRegistrationBean<TaskServlet> servlet = new ServletRegistrationBean<>();
+        servlet.setServlet(new TaskServlet());
+        servlet.setLoadOnStartup(1);
+        servlet.addUrlMappings("/todo");
         return  servlet;
     }
 
