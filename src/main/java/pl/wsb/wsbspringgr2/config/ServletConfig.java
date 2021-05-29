@@ -58,7 +58,7 @@ public class ServletConfig {
         ServletRegistrationBean<TaskServlet> servlet = new ServletRegistrationBean<>();
         servlet.setServlet(new TaskServlet());
         servlet.setLoadOnStartup(1);
-        servlet.addUrlMappings("/todo");
+        servlet.addUrlMappings("/todo", "/todo/list");
         return  servlet;
     }
 

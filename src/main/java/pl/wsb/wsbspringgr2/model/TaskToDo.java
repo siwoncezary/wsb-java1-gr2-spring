@@ -11,4 +11,5 @@ public class TaskToDo {
     private String title;
     private LocalDate deadline;
     private String email;
+    private boolean done;
 }
