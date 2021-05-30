@@ -14,10 +14,10 @@
         <p>Tytuł zadania: ${task.title}</p>
         <p>Email wykonawcy: ${task.email}</p>
         <p>Termin: ${task.deadline}</p>
-        <form method="POST" target="/todo/done">
+        <form method="POST" action="/todo/done">
             <label>Zaznacz jako wykonane</label>
             <c:if test="${task.done eq true}">
-                <input type="checkbox" name="done" readonly checked value="${iteration.index}"/>
+                <input type="checkbox" name="done" disabled checked value="${iteration.index}"/>
             </c:if>
             <c:if test="${task.done ne true}">
                 <input type="checkbox" name="done" value="${iteration.index}"/>

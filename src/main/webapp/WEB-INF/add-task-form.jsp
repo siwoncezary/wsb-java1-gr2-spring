@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>Dodaj zadanie</h2>
-<form method="POST" target="/todo">
+<form method="POST" action="/todo/add">
     <label for="title">Nazwa zadania</label><br>
     <input type="text" name="title" id="title"/><br>
     <label for="deadline">Termin zakończenia zadania</label><br>

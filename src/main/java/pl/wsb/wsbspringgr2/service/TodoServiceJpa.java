@@ -2,7 +2,6 @@ package pl.wsb.wsbspringgr2.service;
 
 import org.springframework.stereotype.Service;
 import pl.wsb.wsbspringgr2.entity.TaskEntity;
-import pl.wsb.wsbspringgr2.model.TaskToDo;
 import pl.wsb.wsbspringgr2.repository.TaskRepository;
 import java.util.List;
 

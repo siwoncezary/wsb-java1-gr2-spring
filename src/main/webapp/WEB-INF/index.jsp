@@ -22,7 +22,10 @@
         <a href="/hello">HelloServlet</a>
     </li>
     <li>
-        <a href="/todo">Dodaj zadanie do wykonania</a>
+        <a href="/todo/add">Dodaj zadanie do wykonania</a>
+    </li>
+    <li>
+        <a href="/todo/list">Lista zadań</a>
     </li>
 </ul>
 </body>

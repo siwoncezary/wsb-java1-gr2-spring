@@ -28,32 +28,34 @@ public class TaskServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/list-task.jsp").forward(req, resp);
             return;
         }
-        req.getRequestDispatcher("/WEB-INF/add-task-form.jsp").forward(req, resp);
+        if (req.getRequestURI().endsWith("/add")) {
+            req.getRequestDispatcher("/WEB-INF/add-task-form.jsp").forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("POST " + req.getRequestURI());
         if(req.getRequestURI().endsWith("/done")){
             System.out.println("DONE");
             String doneTask = req.getParameter("done");
             if (doneTask != null){
                 int index = Integer.parseInt(doneTask);
                 tasks.get(index).setDone(true);
-                System.out.println(tasks.get(index));
             }
-            req.setAttribute("tasks", tasks);
-            req.getRequestDispatcher("/WEB-INF/list-task.jsp").forward(req, resp);
-            return;
+            resp.sendRedirect("/todo/list");
         }
-        String title = req.getParameter("title");
-        String deadline = req.getParameter("deadline");
-        String email = req.getParameter("email");
-        if (title == null || deadline == null || email == null){
-            return;
+        if (req.getRequestURI().endsWith("/add")) {
+            String title = req.getParameter("title");
+            String deadline = req.getParameter("deadline");
+            String email = req.getParameter("email");
+            if (title == null || deadline == null || email == null) {
+                return;
+            }
+            TaskToDo todo = TaskToDo.builder().title(title).email(email).deadline(LocalDate.parse(deadline)).build();
+            tasks.add(todo);
+            resp.setStatus(HttpServletResponse.SC_CREATED);
+            resp.sendRedirect("/todo/list");
         }
-        TaskToDo todo = TaskToDo.builder().title(title).email(email).deadline(LocalDate.parse(deadline)).build();
-        tasks.add(todo);
-        resp.setStatus(HttpServletResponse.SC_CREATED);
-        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
     }
 }
