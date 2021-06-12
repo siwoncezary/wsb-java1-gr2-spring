@@ -16,8 +16,8 @@ public class TodoServiceJpa implements TodoService{
     }
 
     @Override
-    public void addTask(TaskEntity task) {
-        taskRepository.save(task);
+    public TaskEntity addTask(TaskEntity task) {
+        return taskRepository.save(task);
     }
 
     @Override

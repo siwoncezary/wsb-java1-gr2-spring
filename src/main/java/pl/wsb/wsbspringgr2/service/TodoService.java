@@ -6,7 +6,7 @@ import pl.wsb.wsbspringgr2.model.TaskToDo;
 import java.util.List;
 
 public interface TodoService {
-    void addTask(TaskEntity task);
+    TaskEntity addTask(TaskEntity task);
 
     List<TaskEntity> findAll();
 
