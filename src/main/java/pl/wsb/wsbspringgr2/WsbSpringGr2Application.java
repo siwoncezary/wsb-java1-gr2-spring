@@ -39,6 +39,5 @@ public class WsbSpringGr2Application implements CommandLineRunner {
 				.title("testowe zadanie trzecie")
 				.deadline(LocalDate.of(2021, 7, 10))
 				.build());
-		System.out.println(service.findAll());
 	}
 }

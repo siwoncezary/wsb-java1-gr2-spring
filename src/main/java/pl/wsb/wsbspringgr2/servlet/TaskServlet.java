@@ -1,5 +1,6 @@
 package pl.wsb.wsbspringgr2.servlet;
 
+import pl.wsb.wsbspringgr2.model.NewTodoDto;
 import pl.wsb.wsbspringgr2.model.TaskToDo;
 
 import javax.servlet.ServletException;
@@ -46,12 +47,15 @@ public class TaskServlet extends HttpServlet {
             resp.sendRedirect("/todo/list");
         }
         if (req.getRequestURI().endsWith("/add")) {
+
             String title = req.getParameter("title");
             String deadline = req.getParameter("deadline");
             String email = req.getParameter("email");
             if (title == null || deadline == null || email == null) {
                 return;
             }
+
+
             TaskToDo todo = TaskToDo.builder().title(title).email(email).deadline(LocalDate.parse(deadline)).build();
             tasks.add(todo);
             resp.setStatus(HttpServletResponse.SC_CREATED);

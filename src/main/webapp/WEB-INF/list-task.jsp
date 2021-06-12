@@ -15,12 +15,13 @@
         <p>Email wykonawcy: ${task.email}</p>
         <p>Termin: ${task.deadline}</p>
         <form method="POST" action="/todo/done">
-            <label>Zaznacz jako wykonane</label>
             <c:if test="${task.done eq true}">
-                <input type="checkbox" name="done" disabled checked value="${iteration.index}"/>
+                <p>Zadanie wykonane</p>
+                <input type="checkbox" name="done" disabled checked value="${task.id}"/>
             </c:if>
             <c:if test="${task.done ne true}">
-                <input type="checkbox" name="done" value="${iteration.index}"/>
+                <label>Zaznacz jako wykonane</label>
+                <input type="checkbox" name="done" value="${task.id}"/>
                 <input type="submit" value="Zapisz">
             </c:if>
         </form>
